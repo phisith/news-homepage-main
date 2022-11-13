@@ -1,6 +1,8 @@
 ---
+import Navbar from "../components/Navbar.astro";
+
 export interface Props {
-	title: string;
+  title: string;
 }
 
 const { title } = Astro.props;
@@ -8,28 +10,64 @@ const { title } = Astro.props;
 
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <Navbar />
+    <slot />
+
+    <style is:global>
+      :root {
+        --color-white: hsl(36, 100%, 99%);
+        --color-primary: hsl(240, 100%, 5%);
+        --color-secondary: hsl(5, 85%, 63%);
+        --color-warning: hsl(35, 77%, 62%);
+        --color-ghost: hsl(233, 8%, 79%);
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        padding: 4rem 10rem;
+        font-size: 15px;
+      }
+
+      p,
+      a {
+        color: var(--color-ghost);
+      }
+
+      .main-title {
+        font-size: 3.5rem;
+      }
+
+      .text-primary {
+        color: var(--color-primary);
+      }
+
+      .text-warning {
+        color: var(--color-warning);
+      }
+
+      .text-white {
+        color: var(--color-white);
+      }
+
+      .bg-primary {
+        background-color: var(--color-primary);
+      }
+
+      .bg-secondary {
+        background-color: var(--color-secondary);
+      }
+    </style>
+  </body>
 </html>
-<style is:global>
-	:root {
-		--accent: 124, 58, 237;
-		--accent-gradient: linear-gradient(45deg, rgb(var(--accent)), #da62c4 30%, white 60%);
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background-color: #F6F6F6;
-	}
-	code {
-		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-			Bitstream Vera Sans Mono, Courier New, monospace;
-	}
-</style>

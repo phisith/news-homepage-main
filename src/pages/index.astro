@@ -1,81 +1,117 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+import SupCard from "../components/SupCard.astro";
+import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout title="Welcome to Astro.">
-	<main>
-		<h1>Welcome to <span class="text-gradient">Astro</span></h1>
-		<p class="instructions">
-			To get started, open the directory <code>src/pages</code> in your project.<br />
-			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
-		</p>
-		<ul role="list" class="link-card-grid">
-			<Card
-				href="https://docs.astro.build/"
-				title="Documentation"
-				body="Learn how Astro works and explore the official API docs."
-			/>
-			<Card
-				href="https://astro.build/integrations/"
-				title="Integrations"
-				body="Supercharge your project with new frameworks and libraries."
-			/>
-			<Card
-				href="https://astro.build/themes/"
-				title="Themes"
-				body="Explore a galaxy of community-built starter themes."
-			/>
-			<Card
-				href="https://astro.build/chat/"
-				title="Community"
-				body="Come say hi to our amazing Discord community. ❤️"
-			/>
-		</ul>
-	</main>
+<Layout title="News Homepage Main">
+  <main>
+    <section class="main-grid">
+      <img src={"/images/image-web-3-desktop.jpg"} alt={"main-image"} />
+      <article>
+        <h1 class="main-title">The Bright Future of Web 3.0?</h1>
+      </article>
+      <article>
+        <p>
+          We dive into the next evolution of the web that claims to put the
+          power of the platforms back info the hands of the people. But is it
+          really fulfilling its promise?
+        </p>
+        <button class="btn">READ MORE</button>
+      </article>
+      <article class="sidecard bg-primary">
+        <div class="sidecard-body">
+          <h1 class="sidecard-title text-warning">New</h1>
+          <div class="sidecard-list">
+            <h3>Hydrogen VS Electric Cars</h3>
+            <p>Will hydrogen-fueled cars ever catch up to EVs?</p>
+          </div>
+          <div class="sidecard-list">
+            <h3>The Downsides of AI Artistry</h3>
+            <p>
+              What are the possible adverse effects of on-demand AI image
+              generation?
+            </p>
+          </div>
+          <div class="sidecard-list">
+            <h3>Is VC Funding Drying Up?</h3>
+            <p>
+              Private funding by VC firms is down 50% YOY. We take a look at
+              what that means.
+            </p>
+          </div>
+        </div>
+      </article>
+    </section>
+    <section class="sup-grid">
+      <SupCard
+        image={"/images/image-retro-pcs.jpg"}
+        number={"01"}
+        title={"Reviving Retro PCs"}
+        desc={"What happens when old PCs are given modren upgrades?"}
+      />
+      <SupCard
+        image={"/images/image-top-laptops.jpg"}
+        number={"02"}
+        title={"Top 10 Laptops of 2022"}
+        desc={"Our best picks for various needs and budgets."}
+      />
+      <SupCard
+        image={"/images/image-gaming-growth.jpg"}
+        number={"03"}
+        title={"The Growth of Gaming"}
+        desc={"How the pandemic has sparked fresh opportunities."}
+      />
+    </section>
+  </main>
 </Layout>
 
-<style>
-	main {
-		margin: auto;
-		padding: 1.5rem;
-		max-width: 60ch;
-	}
-	h1 {
-		font-size: 3rem;
-		font-weight: 800;
-		margin: 0;
-	}
-	.text-gradient {
-		background-image: var(--accent-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 400%;
-		background-position: 0%;
-	}
-	.instructions {
-		line-height: 1.6;
-		margin: 1rem 0;
-		border: 1px solid rgba(var(--accent), 25%);
-		background-color: white;
-		padding: 1rem;
-		border-radius: 0.4rem;
-	}
-	.instructions code {
-		font-size: 0.875em;
-		font-weight: bold;
-		background: rgba(var(--accent), 12%);
-		color: rgb(var(--accent));
-		border-radius: 4px;
-		padding: 0.3em 0.45em;
-	}
-	.instructions strong {
-		color: rgb(var(--accent));
-	}
-	.link-card-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-		gap: 1rem;
-		padding: 0;
-	}
+<style lang="scss">
+  .main-grid {
+    // display: grid;
+  }
+
+  .sup-grid {
+  }
+
+  .btn {
+    padding: 1em 2em;
+    letter-spacing: 4px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    color: var(--color-white);
+    background-color: var(--color-secondary);
+  }
+
+  .sidecard {
+    display: flex;
+    flex-direction: column;
+
+    .sidecard-title {
+      font-size: 2.5em;
+    }
+
+    .sidecard-body {
+      display: flex;
+      flex-direction: column;
+      padding: 0 3ch;
+
+      .sidecard-list {
+        border-bottom: 1px solid var(--color-ghost);
+        h3 {
+          color: var(--color-white);
+        }
+      }
+
+      .sidecard-list:first-of-type {
+        h3 {
+          margin-top: 0px;
+        }
+      }
+
+      .sidecard-list:last-child {
+        border-bottom: none;
+      }
+    }
+  }
 </style>
